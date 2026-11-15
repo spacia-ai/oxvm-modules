@@ -1,7 +1,7 @@
 {
   "modules": [
     {
-      "source": "github:spacia-ai/oxidevm-pyodide",
+      "source": "github:spacia-ai/oxvm-pyodide",
       "tier": "official",
       "featured": true,
       "title": "Python",
@@ -10,7 +10,7 @@
       "icon": "python"
     },
     {
-      "source": "github:spacia-ai/oxidevm-pglite",
+      "source": "github:spacia-ai/oxvm-pglite",
       "tier": "official",
       "featured": true,
       "title": "PostgreSQL",
@@ -19,7 +19,7 @@
       "icon": "database"
     },
     {
-      "source": "github:spacia-ai/oxidevm-rust",
+      "source": "github:spacia-ai/oxvm-rust",
       "tier": "official",
       "featured": false,
       "title": "Rust",
