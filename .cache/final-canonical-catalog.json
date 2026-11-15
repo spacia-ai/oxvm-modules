@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "modules": [
+    {
+      "source": "github:spacia-ai/oxvm-pyodide",
+      "tier": "official",
+      "featured": true,
+      "title": "Python",
+      "tagline": "Python 3 with pandas and Matplotlib. Just type python3.",
+      "publisher": "Spacia",
+      "icon": "python",
+      "repository": {
+        "url": "https://github.com/spacia-ai/oxvm-pyodide",
+        "description": "OxideVM WebAssembly module: Python (Pyodide) with pandas and Matplotlib, as a command that shares files and processes with Linux programs"
+      },
+      "release": {
+        "tag": "v0.3.1",
+        "url": "https://github.com/spacia-ai/oxvm-pyodide/releases/tag/v0.3.1",
+        "commit": "6b3a4c1d6992caac4923e73c43089bf190610e04",
+        "id": "8ab45dedac714da19216a64b8bba05f29fa2789c2928938e132df296c3b34ff1",
+        "publishedAt": "2026-11-15T23:43:15Z"
+      },
+      "manifest": {
+        "id": "pyodide",
+        "version": "0.3.1",
+        "kind": "command",
+        "commands": [
+          "python",
+          "python3"
+        ],
+        "endpoints": [],
+        "reach": "internet",
+        "browser": [
+          "cross-origin-isolated"
+        ],
+        "license": "Apache-2.0 AND MPL-2.0 AND PSF-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT AND MIT-CMU AND 0BSD AND Zlib AND bzip2-1.0.6 AND CC0-1.0 AND OFL-1.1 AND Bitstream-Vera AND LicenseRef-Matplotlib",
+        "upstream": [
+          {
+            "name": "Pyodide",
+            "version": "314.0.7"
+          },
+          {
+            "name": "certifi",
+            "version": "2026.4.22"
+          },
+          {
+            "name": "contourpy",
+            "version": "1.3.3"
+          },
+          {
+            "name": "kiwisolver",
+            "version": "1.5.0"
+          },
+          {
+            "name": "matplotlib",
+            "version": "3.10.8"
+          },
+          {
+            "name": "numpy",
+            "version": "2.4.6"
+          },
+          {
+            "name": "pandas",
+            "version": "3.0.2"
+          },
+          {
+            "name": "pillow",
+            "version": "12.2.0"
+          }
+        ]
+      },
+      "authority": {
+        "host": [
+          "files.async",
+          "files.sync",
+          "net.internet",
+          "process.info",
+          "process.signals",
+          "process.spawn",
+          "sockets.connect"
+        ],
+        "endpoints": [],
+        "executables": [],
+        "commands": [
+          "python",
+          "python3"
+        ]
+      }
+    },
+    {
+      "source": "github:spacia-ai/oxvm-pglite",
+      "tier": "official",
+      "featured": true,
+      "title": "PostgreSQL",
+      "tagline": "A Postgres 18 database in the workspace. Connect with psql.",
+      "publisher": "Spacia",
+      "icon": "database",
+      "repository": {
+        "url": "https://github.com/spacia-ai/oxvm-pglite",
+        "description": "OxideVM WebAssembly module: PGlite (PostgreSQL 18) as a workspace service"
+      },
+      "release": {
+        "tag": "v0.4.1",
+        "url": "https://github.com/spacia-ai/oxvm-pglite/releases/tag/v0.4.1",
+        "commit": "550c09031db9b3f27d0e6de974758f925b2f6be7",
+        "id": "142f3e66199a704ad2ff9d84abdbef9288781a601b56d65391215efe3eaa7f24",
+        "publishedAt": "2026-11-15T23:43:14Z"
+      },
+      "manifest": {
+        "id": "pglite",
+        "version": "0.4.1",
+        "kind": "service",
+        "commands": [],
+        "endpoints": [
+          {
+            "name": "pg",
+            "kind": "tcp",
+            "port": 5432
+          },
+          {
+            "name": "sql",
+            "kind": "unix",
+            "path": "/workspace/_oxidevm/pglite.sock"
+          }
+        ],
+        "reach": "none",
+        "browser": [],
+        "license": "Apache-2.0 AND PostgreSQL AND MIT AND Unicode-3.0 AND BSD-3-Clause AND Apache-2.0 WITH LLVM-exception",
+        "upstream": [
+          {
+            "name": "@electric-sql/pglite",
+            "version": "0.5.14"
+          },
+          {
+            "name": "PostgreSQL (PGlite fork)",
+            "version": "18.6"
+          }
+        ]
+      },
+      "authority": {
+        "host": [
+          "files.sync",
+          "process.info"
+        ],
+        "endpoints": [
+          "tcp:5432",
+          "unix:/workspace/_oxidevm/pglite.sock"
+        ],
+        "executables": [],
+        "commands": []
+      }
+    },
+    {
+      "source": "github:spacia-ai/oxvm-rust",
+      "tier": "official",
+      "featured": false,
+      "title": "Rust",
+      "tagline": "Run Rust programs built for wasm32-wasip1 as Linux processes, with files, native programs and sockets.",
+      "publisher": "Spacia",
+      "icon": "cube",
+      "repository": {
+        "url": "https://github.com/spacia-ai/oxvm-rust",
+        "description": "OxideVM WebAssembly module: Rust programs (wasm32-wasip1) as Linux processes with the VM's files, native programs and sockets"
+      },
+      "release": {
+        "tag": "v0.2.0",
+        "url": "https://github.com/spacia-ai/oxvm-rust/releases/tag/v0.2.0",
+        "commit": "25aacdc58844e91e654a847d869e973a7f91a67f",
+        "id": "e271fa5d99bdc0d5c04ca6e85e0618ff05398c9352e82a60a06ff93fde820967",
+        "publishedAt": "2026-11-15T23:42:02Z"
+      },
+      "manifest": {
+        "id": "oxvm-rust",
+        "version": "0.2.0",
+        "kind": "command",
+        "commands": [
+          "rust-bridge-demo",
+          "rust-wasi"
+        ],
+        "endpoints": [],
+        "reach": "vm",
+        "browser": [],
+        "license": "Apache-2.0",
+        "upstream": []
+      },
+      "authority": {
+        "host": [
+          "clock",
+          "files.at",
+          "files.sync",
+          "net.vm",
+          "process.info",
+          "process.sync",
+          "random"
+        ],
+        "endpoints": [],
+        "executables": [],
+        "commands": [
+          "rust-bridge-demo",
+          "rust-wasi"
+        ]
+      }
+    }
+  ]
+}

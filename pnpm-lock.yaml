@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      '@oxidevm/sdk':
-        specifier: 0.0.14
-        version: 0.0.14
+      '@oxvm/sdk':
+        specifier: 0.0.27
+        version: 0.0.27
     devDependencies:
       '@types/node':
         specifier: 24.13.3
@@ -242,8 +242,8 @@ packages:
     resolution: {integrity: sha512-XlOlEbQcE9fmuXxrVTXCTlG2nlRXa9Rj3rr5Ue/+tX+nmkgbX720YHh0VR3hBF9xDvwnb8D2shVGOwNx+ulArw==}
     engines: {node: '>= 20.19.0'}
 
-  '@oxidevm/sdk@0.0.14':
-    resolution: {integrity: sha512-cE6hl3AAhp8G7YHH2m907dvrNOEofRWORLKreAvS1btH4+QpjEMoM3H0Ljpub1GxoAQjyRe0+1eSO1tTlKD/xA==}
+  '@oxvm/sdk@0.0.27':
+    resolution: {integrity: sha512-yDr8tNuuMRvR6FwNNNF0pDnkpucxpyyxW3yyJP8bQXhXkVpGtxZu7s0ewiGGqNPiCDjj2Cof0V/czcpTy7AzXA==}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -340,11 +340,6 @@ packages:
   for-each@0.3.5:
     resolution: {integrity: sha512-dKx12eRCVIzqCxFGplyFKJMPvLEWgmNtUrpTiJIR5u97zEhRG8ySrtboPHZXx7daLxQVrl643cTzbab2tkQjxg==}
     engines: {node: '>= 0.4'}
-
-  fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
-    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
-    os: [darwin]
 
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
@@ -455,14 +450,14 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
-  playwright-core@1.61.1:
-    resolution: {integrity: sha512-h7Qlt6m4REp25qvIdvbDtVmD4LqVXfpRxhORv9L0jzETM05p4fuPJ3dKyuSXQxDSbXnmS79HAgi9589lGSpLkg==}
-    engines: {node: '>=18'}
+  playwright-core@1.64.0:
+    resolution: {integrity: sha512-T9r+MZkTECl2+oUcZ26YgZzTrYidTsIhYYkJix+6iDOymOb1FB2RLLSOxRGnZGv5DStt+aduIVbt+E8WygXYpg==}
+    engines: {node: '>=20'}
     hasBin: true
 
-  playwright@1.61.1:
-    resolution: {integrity: sha512-DWnY5o3YbLWK4GovuAVwpqL+1VwGNdUGrRr++8j8PtQQzvAVZUIMjKQ90fY689sEJZJBbZVw1rXaOKSTitkzPQ==}
-    engines: {node: '>=18'}
+  playwright@1.64.0:
+    resolution: {integrity: sha512-kVzTnYFYEyQ9RGzBjNCd2+yEqWmVbxl3AHPynv3qQ6JTjv4a+kwRcnqQwIpuP3NnrnIrE/Q6wWAIAvMfIE2/Yg==}
+    engines: {node: '>=20'}
     hasBin: true
 
   possible-typed-array-names@1.1.0:
@@ -674,7 +669,7 @@ snapshots:
 
   '@noble/hashes@2.0.1': {}
 
-  '@oxidevm/sdk@0.0.14':
+  '@oxvm/sdk@0.0.27':
     dependencies:
       '@babel/generator': 7.29.7
       '@babel/parser': 7.29.7
@@ -693,7 +688,7 @@ snapshots:
       events: 3.3.0
       node-inspect-extracted: 3.3.2
       pako: 3.0.2
-      playwright: 1.61.1
+      playwright: 1.64.0
       process: 0.11.10
       readable-stream: 4.7.0
       systemjs: 6.15.1
@@ -821,9 +816,6 @@ snapshots:
     dependencies:
       is-callable: 1.2.7
 
-  fsevents@2.3.2:
-    optional: true
-
   function-bind@1.1.2: {}
 
   generator-function@2.0.1: {}
@@ -933,13 +925,11 @@ snapshots:
 
   picocolors@1.1.1: {}
 
-  playwright-core@1.61.1: {}
+  playwright-core@1.64.0: {}
 
-  playwright@1.61.1:
+  playwright@1.64.0:
     dependencies:
-      playwright-core: 1.61.1
-    optionalDependencies:
-      fsevents: 2.3.2
+      playwright-core: 1.64.0
 
   possible-typed-array-names@1.1.0: {}
 

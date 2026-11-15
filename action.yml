@@ -1,5 +1,5 @@
-name: OxideVM module listing check
-description: Checks that a module repository and its release meet the listing rules of spacia-ai/oxidevm-modules.
+name: OXVM module listing check
+description: Checks that a module repository and its release meet the listing rules of spacia-ai/oxvm-modules.
 inputs:
   repository:
     description: The module repository, as owner/repo.

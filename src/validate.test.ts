@@ -14,7 +14,7 @@ function submission(overrides: Partial<Submission> = {}): Submission {
 void test("the repository owner can add a module that passes the checks", async () => {
   const result = await validateSubmission(submission(), fakeGithub());
   assert.deepEqual(result.errors, []);
-  assert.deepEqual(result.checked, ["github:acme/oxidevm-db@v1.2.0 (service, network: none)"]);
+  assert.deepEqual(result.checked, ["github:acme/oxvm-db@v1.2.0 (service, network: none)"]);
 });
 
 void test("a public member of the owning organization can add it; anyone else cannot", async () => {
@@ -40,13 +40,22 @@ void test("the tier rule, a malformed file, an empty change and an id clash are 
   assert.match(malformed.errors.join("\n"), /^modules.json:/u);
   const unchanged = await validateSubmission(submission({ base: [entry()], head: { modules: [entry()] } }), fakeGithub());
   assert.match(unchanged.errors.join("\n"), /no added or changed entry/u);
-  const github = fakeGithub({ repositories: [{}, { fullName: "zed/oxidevm-db2" }] });
+  const github = fakeGithub({ repositories: [{}, { fullName: "zed/oxvm-db2" }] });
   const listed = await syncCatalog([entry()], EMPTY, github);
-  const clash = await validateSubmission(submission({ base: [entry()], head: { modules: [entry(), entry({ source: "github:zed/oxidevm-db2" })] }, author: "zed", catalog: listed.catalog }), github);
+  const clash = await validateSubmission(submission({ base: [entry()], head: { modules: [entry(), entry({ source: "github:zed/oxvm-db2" })] }, author: "zed", catalog: listed.catalog }), github);
   assert.match(clash.errors.join("\n"), /already uses/u);
 });
 
 void test("discovery lists topic repositories that modules.json does not", async () => {
-  const github = { ...fakeGithub(), json: () => Promise.resolve({ items: [{ full_name: "acme/oxidevm-db" }, { full_name: "zed/oxidevm-tool" }] }) };
-  assert.deepEqual(await discoverCandidates([entry()], github), ["github:zed/oxidevm-tool"]);
+  const github = { ...fakeGithub(), json: () => Promise.resolve({ items: [{ full_name: "acme/oxvm-db" }, { full_name: "zed/oxvm-tool" }] }) };
+  assert.deepEqual(await discoverCandidates([entry()], github), ["github:zed/oxvm-tool"]);
+});
+
+void test("a maintainer can replace a removed source without a stale catalog ID clash", async () => {
+  const original = entry(), replacement = entry({ source: "github:acme/renamed-db" });
+  const github = fakeGithub({ repositories: [{}, { fullName: "acme/renamed-db" }] });
+  const listed = await syncCatalog([original], EMPTY, github);
+  const request = submission({ base: [original], head: { modules: [replacement] }, author: "acme", maintainer: true, catalog: listed.catalog });
+  assert.deepEqual((await validateSubmission(request, github)).errors, []);
+  assert.match((await validateSubmission({ ...request, maintainer: false }, github)).errors.join("\n"), /Only maintainers remove modules/u);
 });

@@ -1,5 +1,5 @@
 {
-  "name": "oxidevm-modules",
+  "name": "oxvm-modules",
   "private": true,
   "license": "Apache-2.0",
   "type": "module",
@@ -12,7 +12,7 @@
     "check-module": "node src/cli.ts check"
   },
   "dependencies": {
-    "@oxidevm/sdk": "0.0.14"
+    "@oxvm/sdk": "0.0.27"
   },
   "devDependencies": {
     "@types/node": "24.13.3",

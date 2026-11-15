@@ -19,7 +19,7 @@ export interface GithubSource {
 export function githubClient(token: string | undefined): GithubSource {
   const headers = (accept: string): Record<string, string> => ({
     Accept: accept,
-    "User-Agent": "oxidevm-modules",
+    "User-Agent": "oxvm-modules",
     "X-GitHub-Api-Version": "2022-11-28",
     ...(token === undefined ? {} : { Authorization: `Bearer ${token}` }),
   });
@@ -54,7 +54,7 @@ export function githubClient(token: string | undefined): GithubSource {
 async function fetchBytes(url: URL, headers: Record<string, string>, maxBytes: number, allowMissing: boolean): Promise<Uint8Array | null> {
   let target = url;
   for (let hop = 0; hop < 4; hop += 1) {
-    const sent = target.hostname === "api.github.com" ? headers : { Accept: headers["Accept"] ?? "*/*", "User-Agent": "oxidevm-modules" };
+    const sent = target.hostname === "api.github.com" ? headers : { Accept: headers["Accept"] ?? "*/*", "User-Agent": "oxvm-modules" };
     const response = await fetch(target, { headers: sent, redirect: "manual", signal: AbortSignal.timeout(TIMEOUT_MS) });
     const location = response.headers.get("location");
     if (response.status >= 300 && response.status < 400 && location !== null) {
