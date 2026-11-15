@@ -3,3 +3,5 @@ node_modules/
 catalog.json.tmp
 sync-summary.md
 issue.md
+
+.cache/
