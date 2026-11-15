@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "modules": [
     {
-      "source": "github:spacia-ai/oxidevm-pyodide",
+      "source": "github:spacia-ai/oxvm-pyodide",
       "tier": "official",
       "featured": true,
       "title": "Python",
@@ -10,19 +10,19 @@
       "publisher": "Spacia",
       "icon": "python",
       "repository": {
-        "url": "https://github.com/spacia-ai/oxidevm-pyodide",
-        "description": "OxideVM WebAssembly module: Python (Pyodide) with pandas and Matplotlib, as a command that shares files and processes with Linux programs"
+        "url": "https://github.com/spacia-ai/oxvm-pyodide",
+        "description": "OXVM WebAssembly module: Python (Pyodide) with pandas and Matplotlib, as a command that shares files and processes with Linux programs"
       },
       "release": {
-        "tag": "v0.3.0",
-        "url": "https://github.com/spacia-ai/oxidevm-pyodide/releases/tag/v0.3.0",
-        "commit": "38b1631a895db7a27819f6098d5084eb57bc634e",
-        "id": "ab060d492c40bde3478d73682063881a43d09f86894489df31dd305778d2c99d",
-        "publishedAt": "2026-11-03T23:33:21Z"
+        "tag": "v0.3.1",
+        "url": "https://github.com/spacia-ai/oxvm-pyodide/releases/tag/v0.3.1",
+        "commit": "6b3a4c1d6992caac4923e73c43089bf190610e04",
+        "id": "8ab45dedac714da19216a64b8bba05f29fa2789c2928938e132df296c3b34ff1",
+        "publishedAt": "2026-11-15T23:43:15Z"
       },
       "manifest": {
         "id": "pyodide",
-        "version": "0.3.0",
+        "version": "0.3.1",
         "kind": "command",
         "commands": [
           "python",
@@ -88,7 +88,7 @@
       }
     },
     {
-      "source": "github:spacia-ai/oxidevm-pglite",
+      "source": "github:spacia-ai/oxvm-pglite",
       "tier": "official",
       "featured": true,
       "title": "PostgreSQL",
@@ -96,19 +96,19 @@
       "publisher": "Spacia",
       "icon": "database",
       "repository": {
-        "url": "https://github.com/spacia-ai/oxidevm-pglite",
-        "description": "OxideVM WebAssembly module: PGlite (PostgreSQL 18) as a workspace service"
+        "url": "https://github.com/spacia-ai/oxvm-pglite",
+        "description": "OXVM WebAssembly module: PGlite (PostgreSQL 18) as a workspace service"
       },
       "release": {
-        "tag": "v0.4.0",
-        "url": "https://github.com/spacia-ai/oxidevm-pglite/releases/tag/v0.4.0",
-        "commit": "f5592fb00c318669d554221581ec6fdbe36e67af",
-        "id": "373f5dea12f4d4b3efae17a65ae0af0cd35462813e93d7d543afbfbd7cfef2f8",
-        "publishedAt": "2026-11-13T12:44:13Z"
+        "tag": "v0.4.1",
+        "url": "https://github.com/spacia-ai/oxvm-pglite/releases/tag/v0.4.1",
+        "commit": "550c09031db9b3f27d0e6de974758f925b2f6be7",
+        "id": "142f3e66199a704ad2ff9d84abdbef9288781a601b56d65391215efe3eaa7f24",
+        "publishedAt": "2026-11-15T23:43:14Z"
       },
       "manifest": {
         "id": "pglite",
-        "version": "0.4.0",
+        "version": "0.4.1",
         "kind": "service",
         "commands": [],
         "endpoints": [
@@ -151,7 +151,7 @@
       }
     },
     {
-      "source": "github:spacia-ai/oxidevm-rust",
+      "source": "github:spacia-ai/oxvm-rust",
       "tier": "official",
       "featured": false,
       "title": "Rust",
@@ -159,19 +159,19 @@
       "publisher": "Spacia",
       "icon": "cube",
       "repository": {
-        "url": "https://github.com/spacia-ai/oxidevm-rust",
-        "description": "OxideVM WebAssembly module: Rust programs (wasm32-wasip1) as Linux processes with the VM's files, native programs and sockets"
+        "url": "https://github.com/spacia-ai/oxvm-rust",
+        "description": "OXVM WebAssembly module: Rust programs (wasm32-wasip1) as Linux processes with the VM's files, native programs and sockets"
       },
       "release": {
-        "tag": "v0.1.1",
-        "url": "https://github.com/spacia-ai/oxidevm-rust/releases/tag/v0.1.1",
-        "commit": "96f29c63a4d2fc60c3f44d2ccea4996e52758b41",
-        "id": "bd57631c0b9bb8f0d43f6ca103d01a76106ccc4a2ff6bb6f67024f5d13b0b86a",
-        "publishedAt": "2026-11-04T23:39:10Z"
+        "tag": "v0.2.0",
+        "url": "https://github.com/spacia-ai/oxvm-rust/releases/tag/v0.2.0",
+        "commit": "25aacdc58844e91e654a847d869e973a7f91a67f",
+        "id": "e271fa5d99bdc0d5c04ca6e85e0618ff05398c9352e82a60a06ff93fde820967",
+        "publishedAt": "2026-11-15T23:42:02Z"
       },
       "manifest": {
-        "id": "oxidevm-rust",
-        "version": "0.1.1",
+        "id": "oxvm-rust",
+        "version": "0.2.0",
         "kind": "command",
         "commands": [
           "rust-bridge-demo",
