@@ -1,6 +1,6 @@
 // Rebuilds catalog.json from modules.json and each module's latest release. A release that asks for
 // more authority than the listed one (a new host operation, endpoint, Linux program or command) is
-// flagged for review, the same comparison `oxidevm wasm add` makes before it asks a user again. A
+// flagged for review, the same comparison `oxvm wasm add` makes before it asks a user again. A
 // module whose latest release fails the checks keeps its listed release and is reported.
 import type { GithubSource } from "./github.ts";
 import { addedAuthority, checkRelease, checkRepository } from "./release.ts";

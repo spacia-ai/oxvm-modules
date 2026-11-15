@@ -2,7 +2,7 @@
 // SDK itself encodes, so the release checks run exactly as they do against GitHub.
 import { createHash } from "node:crypto";
 
-import { decodeResolvedManifest, encodeModuleManifest } from "@oxidevm/sdk/wasm";
+import { decodeResolvedManifest, encodeModuleManifest } from "@oxvm/sdk/wasm";
 
 import type { GithubSource } from "./github.ts";
 import type { RegistryEntry } from "./registry.ts";
@@ -52,7 +52,7 @@ export interface FakeGithub {
 /** Every repository answers with one release; `manifest`, `sums` and the records can be replaced. */
 export function fakeGithub(fake: FakeGithub = {}): GithubSource {
   const repositories = fake.repositories ?? [{}];
-  const resolve = (owner: string, repo: string): FakeRepository | undefined => repositories.find((candidate) => (candidate.fullName ?? "acme/oxidevm-db") === `${owner}/${repo}`);
+  const resolve = (owner: string, repo: string): FakeRepository | undefined => repositories.find((candidate) => (candidate.fullName ?? "acme/oxvm-db") === `${owner}/${repo}`);
   const parts = (path: string): { owner: string; repo: string; rest: string } | null => {
     const match = /^\/repos\/([^/]+)\/([^/]+)(.*)$/u.exec(path);
     return match?.[1] === undefined || match[2] === undefined ? null : { owner: decodeURIComponent(match[1]), repo: decodeURIComponent(match[2]), rest: match[3] ?? "" };
@@ -73,7 +73,7 @@ export function fakeGithub(fake: FakeGithub = {}): GithubSource {
           archived: false,
           description: "A database",
           license: { spdx_id: "Apache-2.0" },
-          topics: ["oxidevm-module"],
+          topics: ["oxvm-module"],
           html_url: `https://github.com/${fullName}`,
           owner: { login: found.owner, type: repository.ownerType ?? "User" },
           ...repository.repository,
@@ -106,5 +106,5 @@ export function fakeGithub(fake: FakeGithub = {}): GithubSource {
 }
 
 export function entry(overrides: Partial<RegistryEntry> = {}): RegistryEntry {
-  return { source: "github:acme/oxidevm-db", tier: "community", featured: false, title: "DB", tagline: "A database.", publisher: "Acme", icon: "database", ...overrides };
+  return { source: "github:acme/oxvm-db", tier: "community", featured: false, title: "DB", tagline: "A database.", publisher: "Acme", icon: "database", ...overrides };
 }

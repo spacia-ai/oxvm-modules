@@ -18,13 +18,13 @@ void test("modules.json refuses unknown fields, bad sources, unknown icons and d
   assert.throws(() => decodeRegistry({ modules: [{ ...entry(), extra: 1 }] }), /unknown field extra/u);
   assert.throws(() => decodeRegistry({ modules: [{ ...entry(), source: "https://github.com/acme/db" }] }), /github:<owner>\/<repo>/u);
   assert.throws(() => decodeRegistry({ modules: [{ ...entry(), icon: "rocket" }] }), /icon must be one of/u);
-  assert.throws(() => decodeRegistry({ modules: [entry(), entry({ source: "github:ACME/oxidevm-db" })] }), /twice/u);
+  assert.throws(() => decodeRegistry({ modules: [entry(), entry({ source: "github:ACME/oxvm-db" })] }), /twice/u);
 });
 
 void test("official means published by spacia-ai, and only official modules are featured", () => {
   assert.equal(tierProblem(entry()), null);
   assert.match(tierProblem(entry({ tier: "official" })) ?? "", /must be community/u);
-  assert.match(tierProblem(entry({ source: "github:spacia-ai/oxidevm-db" })) ?? "", /must be official/u);
+  assert.match(tierProblem(entry({ source: "github:spacia-ai/oxvm-db" })) ?? "", /must be official/u);
   assert.match(tierProblem(entry({ featured: true })) ?? "", /only official modules are featured/u);
-  assert.equal(tierProblem(entry({ source: "github:spacia-ai/oxidevm-db", tier: "official", featured: true })), null);
+  assert.equal(tierProblem(entry({ source: "github:spacia-ai/oxvm-db", tier: "official", featured: true })), null);
 });

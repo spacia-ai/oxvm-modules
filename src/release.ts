@@ -1,10 +1,10 @@
 // The listing checks for one module repository and its release, and the facts the catalog keeps.
 // A release is listed only when it is a published, immutable GitHub release, its SHA256SUMS pins
 // its module.json, the SDK's own decoder accepts that manifest, and a copyleft license names its
-// source: the rules `oxidevm wasm add` applies before it installs anything.
+// source: the rules `oxvm wasm add` applies before it installs anything.
 import { createHash } from "node:crypto";
 
-import { classifyLicense, decodeModuleManifest, type ResolvedManifest } from "@oxidevm/sdk/wasm";
+import { classifyLicense, decodeModuleManifest, type ResolvedManifest } from "@oxvm/sdk/wasm";
 
 import type { GithubSource } from "./github.ts";
 import { list, record, sourceRepository, type ModuleAuthority, type ModuleEndpoint, type ModuleReach, type ModuleSource, type ReleaseFacts } from "./registry.ts";
@@ -14,7 +14,7 @@ const MAX_SUMS_BYTES = 64 * 1024;
 const SUMS_LINE = /^([0-9a-f]{64}) {2}(.+)$/u;
 
 /** The topic every listed repository carries, so `discover` can find modules that are not listed. */
-export const MODULE_TOPIC = "oxidevm-module";
+export const MODULE_TOPIC = "oxvm-module";
 
 export class ListingError extends Error {
   override readonly name = "ListingError";
@@ -79,7 +79,7 @@ export async function checkRelease(source: ModuleSource, github: GithubSource, r
   try {
     manifest = decodeModuleManifest(manifestBytes);
   } catch (error) {
-    return fail(`has a module.json the OxideVM SDK refuses: ${error instanceof Error ? error.message : String(error)}`);
+    return fail(`has a module.json the OXVM SDK refuses: ${error instanceof Error ? error.message : String(error)}`);
   }
   if (classifyLicense(manifest.license.spdx).copyleft && manifest.license.source === undefined) fail("is copyleft and names no license.source");
   return {
@@ -110,7 +110,7 @@ export function manifestFacts(manifest: ResolvedManifest): ReleaseFacts["manifes
   };
 }
 
-/** The authority `oxidevm wasm add` compares: host operations, endpoints, Linux programs and commands. */
+/** The authority `oxvm wasm add` compares: host operations, endpoints, Linux programs and commands. */
 export function moduleAuthority(manifest: ResolvedManifest): ModuleAuthority {
   const sorted = (values: readonly string[]): readonly string[] => [...new Set(values)].sort();
   return {
@@ -131,7 +131,7 @@ export function addedAuthority(previous: ModuleAuthority, next: ModuleAuthority)
 }
 
 /**
- * The SDK's reach rule (`moduleReach` in @oxidevm/sdk wasm/reach.js, OxideVM ADR 0029), which the
+ * The SDK's reach rule (`moduleReach` in @oxvm/sdk wasm/reach.js, OXVM ADR 0029), which the
  * SDK does not export: `net.internet` reaches the internet, `net.vm` or a bare `sockets.connect`
  * reaches programs in the VM, anything else reaches nothing.
  */

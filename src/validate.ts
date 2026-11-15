@@ -47,7 +47,7 @@ export async function validateSubmission(submission: Submission, github: GithubS
         errors.push(`${entry.source}: @${submission.author} is not its owner or a public member of ${repository.owner}`);
       }
       const facts = await checkRelease(entry.source, github, repository);
-      const clash = submission.catalog.modules.find((module) => module.manifest.id === facts.manifest.id && key(module) !== key(entry));
+      const clash = submission.catalog.modules.find((module) => headSources.has(key(module)) && module.manifest.id === facts.manifest.id && key(module) !== key(entry));
       if (clash !== undefined) errors.push(`${entry.source} declares module id ${facts.manifest.id}, which ${clash.source} already uses`);
       checked.push(`${entry.source}@${facts.release.tag} (${facts.manifest.kind}, network: ${facts.manifest.reach})`);
     } catch (error) {
@@ -65,7 +65,7 @@ async function ownsRepository(author: string, owner: string, ownerType: "User" |
 
 /** Repositories with the module topic that modules.json does not list. */
 export async function discoverCandidates(listed: readonly RegistryEntry[], github: GithubSource): Promise<readonly string[]> {
-  const result = await github.json("/search/repositories?q=topic:oxidevm-module+is:public+archived:false&per_page=100");
+  const result = await github.json("/search/repositories?q=topic:oxvm-module+is:public+archived:false&per_page=100");
   if (typeof result !== "object" || result === null || !("items" in result) || !Array.isArray(result.items)) throw new Error("The topic search returned no item list");
   const known = new Set(listed.map((entry) => { const { owner, repo } = sourceRepository(entry.source); return `${owner}/${repo}`.toLowerCase(); }));
   const names: string[] = [];

@@ -6,24 +6,24 @@
 export const MODULE_TIERS = ["official", "community"] as const;
 export type ModuleTier = (typeof MODULE_TIERS)[number];
 
-/** Line icons the OxideVM pages draw for a module. */
+/** Line icons the OXVM pages draw for a module. */
 export const MODULE_ICONS = ["python", "database", "terminal", "cube"] as const;
 export type ModuleIcon = (typeof MODULE_ICONS)[number];
 
 export const MODULE_REACHES = ["none", "vm", "internet"] as const;
-/** How far the module reaches on the network (OxideVM ADR 0029), as the SDK's `ModuleReach`. */
+/** How far the module reaches on the network (OXVM ADR 0029), as the SDK's `ModuleReach`. */
 export type ModuleReach = (typeof MODULE_REACHES)[number];
 
 /** The owner that publishes official modules. */
 export const OFFICIAL_OWNER = "spacia-ai";
 
-/** A module's source in the form `oxidevm wasm add` takes: `github:<owner>/<repo>`. */
+/** A module's source in the form `oxvm wasm add` takes: `github:<owner>/<repo>`. */
 export type ModuleSource = `github:${string}/${string}`;
 
 export interface RegistryEntry {
   readonly source: ModuleSource;
   readonly tier: ModuleTier;
-  /** Featured modules also appear on the oxidevm.dev landing page. */
+  /** Featured modules also appear on the oxvm.dev landing page. */
   readonly featured: boolean;
   /** The name a visitor knows, such as "Python" rather than "Pyodide". */
   readonly title: string;
@@ -39,7 +39,7 @@ export type ModuleEndpoint =
   | { readonly name: string; readonly kind: "unix"; readonly path: string };
 
 /**
- * What a release may do, in the terms `oxidevm wasm add` compares between releases: a release that
+ * What a release may do, in the terms `oxvm wasm add` compares between releases: a release that
  * adds any of these asks the user again, and a catalog update that adds any needs a review.
  */
 export interface ModuleAuthority {
@@ -56,7 +56,7 @@ export interface ReleaseFacts {
     readonly url: string;
     /** The commit the tag pointed to when the catalog was written. */
     readonly commit: string;
-    /** The sha256 of the release's SHA256SUMS, as `oxidevm wasm add` names the release. */
+    /** The sha256 of the release's SHA256SUMS, as `oxvm wasm add` names the release. */
     readonly id: string;
     readonly publishedAt: string;
   };

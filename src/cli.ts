@@ -4,7 +4,7 @@
 //                                check a pull request's modules.json against the base modules.json
 //   check <owner>/<repo> [--tag <tag>]
 //                                check that a repository and its release can be listed
-//   discover                     repositories with the oxidevm-module topic that are not listed
+//   discover                     repositories with the oxvm-module topic that are not listed
 import { appendFile, readFile, rename, writeFile } from "node:fs/promises";
 
 import { githubClient, githubToken } from "./github.ts";
@@ -88,7 +88,7 @@ async function main(args: readonly string[]): Promise<number> {
     }
     case "discover": {
       const candidates = await discoverCandidates(await registry(), github);
-      console.log(candidates.length === 0 ? "No unlisted repository carries the oxidevm-module topic." : candidates.join("\n"));
+      console.log(candidates.length === 0 ? "No unlisted repository carries the oxvm-module topic." : candidates.join("\n"));
       return 0;
     }
     default:
