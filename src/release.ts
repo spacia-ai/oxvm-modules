@@ -79,7 +79,7 @@ export async function checkRelease(source: ModuleSource, github: GithubSource, r
   try {
     manifest = decodeModuleManifest(manifestBytes);
   } catch (error) {
-    return fail(`has a module.json the OXVM SDK refuses: ${error instanceof Error ? error.message : String(error)}`);
+    return fail(`has a module.json the OxVM SDK refuses: ${error instanceof Error ? error.message : String(error)}`);
   }
   if (classifyLicense(manifest.license.spdx).copyleft && manifest.license.source === undefined) fail("is copyleft and names no license.source");
   return {
@@ -131,7 +131,7 @@ export function addedAuthority(previous: ModuleAuthority, next: ModuleAuthority)
 }
 
 /**
- * The SDK's reach rule (`moduleReach` in @oxvm/sdk wasm/reach.js, OXVM ADR 0029), which the
+ * The SDK's reach rule (`moduleReach` in @oxvm/sdk wasm/reach.js, OxVM ADR 0029), which the
  * SDK does not export: `net.internet` reaches the internet, `net.vm` or a bare `sockets.connect`
  * reaches programs in the VM, anything else reaches nothing.
  */

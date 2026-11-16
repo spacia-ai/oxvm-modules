@@ -1,6 +1,6 @@
-# OXVM modules
+# OxVM modules
 
-The list of WebAssembly modules for [OXVM](https://oxvm.dev). The [module catalog](https://oxvm.dev/docs/modules/) on oxvm.dev and the landing page are built from this repository.
+The list of WebAssembly modules for [OxVM](https://oxvm.dev). The [module catalog](https://oxvm.dev/docs/modules/) on oxvm.dev and the landing page are built from this repository.
 
 A module packages a WebAssembly program, such as Python or a PostgreSQL database, so that an application installs it with one command and runs it in its VM:
 
@@ -62,7 +62,7 @@ The `validate` check runs on the pull request. It confirms that you own the repo
 
 - it is a published, immutable release;
 - its `SHA256SUMS` pins its `module.json`;
-- the OXVM SDK accepts the manifest;
+- the OxVM SDK accepts the manifest;
 - a copyleft license names where its source is;
 - no listed module already uses its module id.
 
@@ -73,7 +73,7 @@ A maintainer then reviews the entry and the module's declarations, and merges it
 You don't open a pull request for a new release. Every night the `sync` workflow reads the latest release of every listed module and opens one pull request that updates `catalog.json`. A maintainer merges it.
 
 - When a release asks for more authority than the listed one, the pull request is marked **review required** and shows what was added. That means a new host operation, endpoint, Linux program or command, the same comparison `oxvm wasm add` makes before it asks a user again.
-- When a release fails a check, the module stays listed at its earlier release, and the pull request says why.
+- When a release fails a check, the module stays listed at its earlier release, and the pull request says why. If repository checks pass and its URL matches the listed URL, the sync can refresh its description. All release facts and authority stay unchanged.
 
 ## Trust
 

@@ -3,7 +3,7 @@
 // flagged for review, the same comparison `oxvm wasm add` makes before it asks a user again. A
 // module whose latest release fails the checks keeps its listed release and is reported.
 import type { GithubSource } from "./github.ts";
-import { addedAuthority, checkRelease, checkRepository } from "./release.ts";
+import { addedAuthority, checkRelease, checkRepository, type RepositoryFacts } from "./release.ts";
 import type { CatalogEntry, ModuleCatalog, ModuleSource, RegistryEntry } from "./registry.ts";
 
 export interface SyncChange {
@@ -34,8 +34,10 @@ export async function syncCatalog(registry: readonly RegistryEntry[], previous: 
   const failures: SyncFailure[] = [];
   for (const entry of registry) {
     const listed = previous.modules.find((module) => module.source.toLowerCase() === entry.source.toLowerCase());
+    let repository: RepositoryFacts | undefined;
     try {
-      const facts = await checkRelease(entry.source, github, await checkRepository(entry.source, github));
+      repository = await checkRepository(entry.source, github);
+      const facts = await checkRelease(entry.source, github, repository);
       const conflict = modules.find((module) => module.manifest.id === facts.manifest.id);
       if (conflict !== undefined) throw new Error(`declares module id ${facts.manifest.id}, which ${conflict.source} already uses`);
       if (listed === undefined || listed.release.id !== facts.release.id) {
@@ -44,7 +46,12 @@ export async function syncCatalog(registry: readonly RegistryEntry[], previous: 
       modules.push({ ...entry, ...facts });
     } catch (error) {
       failures.push({ source: entry.source, reason: error instanceof Error ? error.message : String(error), kept: listed !== undefined });
-      if (listed !== undefined) modules.push({ ...listed, ...entry });
+      if (listed !== undefined) {
+        const keptRepository = repository?.url === listed.repository.url
+          ? { ...listed.repository, description: repository.description }
+          : listed.repository;
+        modules.push({ ...listed, ...entry, repository: keptRepository });
+      }
     }
   }
   return { catalog: { schemaVersion: 1, modules }, changes, failures };

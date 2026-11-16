@@ -6,12 +6,12 @@
 export const MODULE_TIERS = ["official", "community"] as const;
 export type ModuleTier = (typeof MODULE_TIERS)[number];
 
-/** Line icons the OXVM pages draw for a module. */
+/** Line icons the OxVM pages draw for a module. */
 export const MODULE_ICONS = ["python", "database", "terminal", "cube"] as const;
 export type ModuleIcon = (typeof MODULE_ICONS)[number];
 
 export const MODULE_REACHES = ["none", "vm", "internet"] as const;
-/** How far the module reaches on the network (OXVM ADR 0029), as the SDK's `ModuleReach`. */
+/** How far the module reaches on the network (OxVM ADR 0029), as the SDK's `ModuleReach`. */
 export type ModuleReach = (typeof MODULE_REACHES)[number];
 
 /** The owner that publishes official modules. */
