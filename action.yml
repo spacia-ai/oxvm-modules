@@ -1,4 +1,4 @@
-name: OXVM module listing check
+name: OxVM module listing check
 description: Checks that a module repository and its release meet the listing rules of spacia-ai/oxvm-modules.
 inputs:
   repository:

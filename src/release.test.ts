@@ -38,7 +38,7 @@ void test("refuses a mutable release, a prerelease, unpinned manifests and copyl
   const gpl = manifestBytes({ license: { spdx: "GPL-3.0-only" } });
   await assert.rejects(run({ repositories: [{ manifest: gpl, sums: sums({ "module.json": gpl }) }] }), /copyleft and names no license.source/u);
   const broken = new TextEncoder().encode('{"id":"x"}');
-  await assert.rejects(run({ repositories: [{ manifest: broken, sums: sums({ "module.json": broken }) }] }), /OXVM SDK refuses/u);
+  await assert.rejects(run({ repositories: [{ manifest: broken, sums: sums({ "module.json": broken }) }] }), /OxVM SDK refuses/u);
 });
 
 void test("authority grows only by what a release adds", () => {

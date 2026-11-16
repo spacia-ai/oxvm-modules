@@ -1,6 +1,6 @@
 # oxvm-modules: instructions for coding agents
 
-This public repository lists OXVM WebAssembly modules. `modules.json` is edited by pull request; `catalog.json` is written only by `node src/cli.ts sync`.
+This public repository lists OxVM WebAssembly modules. `modules.json` is edited by pull request; `catalog.json` is written only by `node src/cli.ts sync`.
 
 - Commit as the repository owner, with no tool or assistant attribution in commits, pull requests or tags.
 - Keep `src/` strict TypeScript that Node runs directly: no `any`, everything from GitHub starts as `unknown` and is decoded.

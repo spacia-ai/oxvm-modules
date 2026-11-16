@@ -11,7 +11,7 @@
       "icon": "python",
       "repository": {
         "url": "https://github.com/spacia-ai/oxvm-pyodide",
-        "description": "OXVM WebAssembly module: Python (Pyodide) with pandas and Matplotlib, as a command that shares files and processes with Linux programs"
+        "description": "OxVM WebAssembly module: Python (Pyodide) with pandas and Matplotlib, as a command that shares files and processes with Linux programs"
       },
       "release": {
         "tag": "v0.3.1",
@@ -97,7 +97,7 @@
       "icon": "database",
       "repository": {
         "url": "https://github.com/spacia-ai/oxvm-pglite",
-        "description": "OXVM WebAssembly module: PGlite (PostgreSQL 18) as a workspace service"
+        "description": "OxVM WebAssembly module: PGlite (PostgreSQL 18) as a workspace service"
       },
       "release": {
         "tag": "v0.4.1",
@@ -160,7 +160,7 @@
       "icon": "cube",
       "repository": {
         "url": "https://github.com/spacia-ai/oxvm-rust",
-        "description": "OXVM WebAssembly module: Rust programs (wasm32-wasip1) as Linux processes with the VM's files, native programs and sockets"
+        "description": "OxVM WebAssembly module: Rust programs (wasm32-wasip1) as Linux processes with the VM's files, native programs and sockets"
       },
       "release": {
         "tag": "v0.2.0",

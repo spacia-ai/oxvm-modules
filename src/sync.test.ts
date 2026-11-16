@@ -42,6 +42,42 @@ void test("a release that fails its checks keeps the listed release and is repor
   assert.equal(unlisted.failures[0]?.kept, false);
 });
 
+void test("a refused release refreshes only the validated repository description", async () => {
+  const first = await syncCatalog([entry()], EMPTY, fakeGithub());
+  const before = structuredClone(first.catalog);
+  const listed = before.modules[0];
+  assert.ok(listed);
+  const github = fakeGithub({ repositories: [{ repository: { description: "OxVM database" }, release: { tag_name: "v2.0.0", immutable: false } }] });
+  const second = await syncCatalog([entry()], first.catalog, github);
+  assert.deepEqual(second.catalog, { ...before, modules: [{ ...listed, repository: { ...listed.repository, description: "OxVM database" } }] });
+  assert.deepEqual(first.catalog, before);
+  assert.deepEqual(second.changes, []);
+  assert.equal(second.failures[0]?.kept, true);
+  assert.match(second.failures[0]?.reason ?? "", /is not an immutable release/u);
+  assert.match(syncSummary(second), /is not an immutable release.*still listed at its earlier release/u);
+  assert.equal(reviewRequired(second), true);
+});
+
+void test("an invalid repository keeps the listed description", async () => {
+  const first = await syncCatalog([entry()], EMPTY, fakeGithub());
+  const before = structuredClone(first.catalog);
+  const github = fakeGithub({ repositories: [{ repository: { private: true, description: "OxVM database" }, release: { immutable: false } }] });
+  const second = await syncCatalog([entry()], first.catalog, github);
+  assert.deepEqual(second.catalog, before);
+  assert.match(second.failures[0]?.reason ?? "", /is not public/u);
+  assert.equal(reviewRequired(second), true);
+});
+
+void test("a different validated repository URL keeps the listed description when its release is refused", async () => {
+  const first = await syncCatalog([entry()], EMPTY, fakeGithub());
+  const before = structuredClone(first.catalog);
+  const github = fakeGithub({ repositories: [{ repository: { html_url: "https://github.com/other/oxvm-db", description: "OxVM database" }, release: { immutable: false } }] });
+  const second = await syncCatalog([entry()], first.catalog, github);
+  assert.deepEqual(second.catalog, before);
+  assert.match(second.failures[0]?.reason ?? "", /is not an immutable release/u);
+  assert.equal(reviewRequired(second), true);
+});
+
 void test("two modules may not declare the same module id", async () => {
   const github = fakeGithub({ repositories: [{}, { fullName: "zed/oxvm-db2" }] });
   const result = await syncCatalog([entry(), entry({ source: "github:zed/oxvm-db2" })], EMPTY, github);
