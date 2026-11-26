@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@oxvm/sdk':
-        specifier: 0.0.34
-        version: 0.0.34
+        specifier: 0.0.37
+        version: 0.0.37
     devDependencies:
       '@types/node':
         specifier: 24.13.3
@@ -234,6 +234,10 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
+  '@noble/ciphers@2.0.1':
+    resolution: {integrity: sha512-xHK3XHPUW8DTAobU+G0XT+/w+JLM7/8k1UFdB5xg/zTFPnFCobhftzw8wl4Lw2aq/Rvir5pxfZV5fEazmeCJ2g==}
+    engines: {node: '>= 20.19.0'}
+
   '@noble/curves@2.0.1':
     resolution: {integrity: sha512-vs1Az2OOTBiP4q0pwjW5aF0xp9n4MxVrmkFBxc6EKZc6ddYx5gaZiAsZoq0uRRXWbi3AT/sBqn05eRPtn1JCPw==}
     engines: {node: '>= 20.19.0'}
@@ -242,8 +246,8 @@ packages:
     resolution: {integrity: sha512-XlOlEbQcE9fmuXxrVTXCTlG2nlRXa9Rj3rr5Ue/+tX+nmkgbX720YHh0VR3hBF9xDvwnb8D2shVGOwNx+ulArw==}
     engines: {node: '>= 20.19.0'}
 
-  '@oxvm/sdk@0.0.34':
-    resolution: {integrity: sha512-aYJMrhJC37uD5xBMn9R800UbgIGgA7NoRMckBWZsfLaXCBCRZLwoT+p8yQ1oi/L+DAn6xuvU/Yjgz756khRZAA==}
+  '@oxvm/sdk@0.0.37':
+    resolution: {integrity: sha512-mpjgbcsG7KK4YGjl+vVD1zfUNtgHunjFLGw2gDTYTSJT+8OXLZqkEvsqzxP3T+2dQCtmCoa2Vc7gpOOYs4ZhYQ==}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -663,13 +667,15 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
+  '@noble/ciphers@2.0.1': {}
+
   '@noble/curves@2.0.1':
     dependencies:
       '@noble/hashes': 2.0.1
 
   '@noble/hashes@2.0.1': {}
 
-  '@oxvm/sdk@0.0.34':
+  '@oxvm/sdk@0.0.37':
     dependencies:
       '@babel/generator': 7.29.7
       '@babel/parser': 7.29.7
@@ -677,6 +683,7 @@ snapshots:
       '@babel/types': 7.29.7
       '@balena/dockerignore': 1.0.2
       '@jridgewell/trace-mapping': 0.3.31
+      '@noble/ciphers': 2.0.1
       '@noble/curves': 2.0.1
       '@noble/hashes': 2.0.1
       '@pkgjs/parseargs': 0.11.0
