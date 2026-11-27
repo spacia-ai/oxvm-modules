@@ -1,4 +1,4 @@
 allowBuilds:
   esbuild: false
 minimumReleaseAgeExclude:
-  - "@oxvm/sdk@0.0.38"
+  - "@oxvm/sdk@0.0.39"
