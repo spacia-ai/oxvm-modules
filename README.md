@@ -5,7 +5,7 @@ The list of WebAssembly modules for [OxVM](https://oxvm.dev). The [module catalo
 A module packages a WebAssembly program, such as Python or a PostgreSQL database, so that an application installs it with one command and runs it in its VM:
 
 ```sh
-npm exec --package @oxvm/cli@0.0.38 -- oxvm wasm add github:spacia-ai/oxvm-pyodide@v0.3.1
+npm exec --package @oxvm/cli@0.0.39 -- oxvm wasm add github:spacia-ai/oxvm-pyodide@v0.3.1
 ```
 
 [WebAssembly modules](https://oxvm.dev/docs/guides/wasm-modules/) explains how to use them, and [Author a module](https://oxvm.dev/docs/guides/author-a-module/) how to make one.

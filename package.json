@@ -12,7 +12,7 @@
     "check-module": "node src/cli.ts check"
   },
   "dependencies": {
-    "@oxvm/sdk": "0.0.38"
+    "@oxvm/sdk": "0.0.39"
   },
   "devDependencies": {
     "@types/node": "24.13.3",
